@@ -459,8 +459,8 @@ function(WAVM_SET_TARGET_COMPILE_OPTIONS TARGET_NAME)
 		target_compile_options(${TARGET_NAME} PRIVATE "/MP")
 
 		# Compile with all warnings, and fatal warnings.
-		target_compile_options(${TARGET_NAME} PRIVATE "/W4")
-		target_compile_options(${TARGET_NAME} PRIVATE "/WX")
+		#target_compile_options(${TARGET_NAME} PRIVATE "/W4")
+		#target_compile_options(${TARGET_NAME} PRIVATE "/WX")
 
 		# Disable warnings
 		target_compile_options(${TARGET_NAME} PRIVATE "/wd4127") # conditional expression is constant
@@ -687,8 +687,8 @@ set_target_properties(libWAVM PROPERTIES
 
 # Set up the WAVM_API definitions.
 if(NOT WAVM_ENABLE_STATIC_LINKING AND MSVC)
-	target_compile_definitions(libWAVM PRIVATE "\"WAVM_API=__declspec(dllexport)\"")
-	target_compile_definitions(libWAVM INTERFACE "\"WAVM_API=__declspec(dllimport)\"")
+	target_compile_definitions(libWAVM PRIVATE "WAVM_API=__declspec(dllexport)")
+	target_compile_definitions(libWAVM INTERFACE "WAVM_API=__declspec(dllimport)")
 elseif(NOT WAVM_ENABLE_STATIC_LINKING AND CXX_HAS_FVISIBILITY_HIDDEN)
 	target_compile_definitions(libWAVM PUBLIC "WAVM_API=__attribute__((visibility(\"default\")))")
 else()
