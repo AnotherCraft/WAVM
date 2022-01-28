@@ -84,6 +84,7 @@ ADD_WAST_TESTS(
 		type.wast
 		unreachable.wast
 		unreached-invalid.wast
+		unreached-valid.wast
 		unwind.wast
 		utf8-custom-section-id.wast
 		utf8-import-field.wast
@@ -94,6 +95,6 @@ ADD_WAST_TESTS(
 if(WAVM_ENABLE_RUNTIME)
 	if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
 		# Can't use WILL_FAIL, since it doesn't expect tests that crash.
-		set_tests_properties(spec/skip-stack-guard-page.wast PROPERTIES DISABLED true)
+		set_tests_properties(WebAssembly/spec/skip-stack-guard-page.wast PROPERTIES DISABLED true)
 	endif()
 endif()
